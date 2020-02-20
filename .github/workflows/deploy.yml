@@ -1,8 +1,8 @@
 name: Workflow for Deploy my app
 on:
-  pull_request:
-    branches:
-      - master
+  push:
+    tags:
+      - v*
 
 jobs:
   deploy:
