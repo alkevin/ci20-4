@@ -52,6 +52,7 @@ jobs:
   test-functionnal:
     name: Test Functional
     runs-on: ubuntu-latest
+    needs: dependencies
     steps:
     - name: Checkout srouce code
       uses: actions/checkout@v2
