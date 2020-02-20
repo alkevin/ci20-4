@@ -45,8 +45,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
-    - name: Validate composer.json and composer.lock
-      run: composer validate
     - name: Composer Install missing files
       run: composer install --prefer-dist --no-progress --no-suggest
     - name: Run Test Intégration
@@ -58,8 +56,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
-    - name: Validate composer.json and composer.lock
-      run: composer validate
     - name: Composer Install missing files
       run: composer install --prefer-dist --no-progress --no-suggest
     - name: Run Test Functional
