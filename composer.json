@@ -1,7 +1,7 @@
 {
     "type": "project",
     "license": "proprietary",
-    "name": "toto",
+    "name": "ci20-4",
     "description": "toto",
     "require": {
         "php": "^7.1.3",
