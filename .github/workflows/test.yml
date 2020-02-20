@@ -1,0 +1,63 @@
+name: Workflow for test my app
+on: [push]
+jobs:
+  #cache:
+  #  name: Mise en Cache
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #  - uses: actions/checkout@v1
+  #  - name: Validate composer.json and composer.lock
+  #    run: composer validate
+  #  - name: Composer Install missing files
+  #    run: composer install --prefer-dist --no-progress --no-suggest
+  #  - name: Cache Composer
+  #    id: cache-composer
+  #    uses: actions/cache@v1
+  #    with: 
+  #      path: vendor/
+  #      key: ${{ runner.os }}-composer
+  #  - name:  Generate Composer
+  #    if: steps.cache-composer.outputs.cache-hit != 'true'
+  #    - name: Validate composer.json and composer.lock
+  #      run: composer validate
+  #    - name: Composer Install missing files
+  #      run: composer install --prefer-dist --no-progress --no-suggest
+  #    - name: Use Composer
+  #      run: cache-composer
+  
+
+  test-unit:
+    name: Test Unit
+    runs-on: ubuntu-latest    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    #- name: Validate composer.json and composer.lock
+    #  run: composer validate
+    - name: Composer Install missing files
+      run: composer install --prefer-dist --no-progress --no-suggest
+    - name: Run tests Unit
+      run: bin/phpunit tests/Unit
+
+  test-integration:
+    name: Test Intégration
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Composer Install missing files
+      run: composer install --prefer-dist --no-progress --no-suggest
+    - name: Run Test Intégration
+      run: bin/phpunit tests/Integration
+
+  test-functionnal:
+    name: Test Functional
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Composer Install missing files
+      run: composer install --prefer-dist --no-progress --no-suggest
+    - name: Run Test Functional
+      run: php vendor/bin/behat
+    
