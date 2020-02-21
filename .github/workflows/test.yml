@@ -1,5 +1,10 @@
 name: Workflow for test my app
-on: push
+on:
+  push:
+    branches:
+      - develop
+      - feature
+      
 jobs:
   dependencies:
     name: Install Php dependencies
